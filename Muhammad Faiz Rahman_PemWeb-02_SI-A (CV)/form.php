@@ -1,15 +1,15 @@
-<?php 
-include "session.php"; // kode dalam session.php akan dieksekusi seolah olah ada di page ini
+<?php
+// include "session.php"; 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $_SESSION['nama'] = $_POST['nama'];
-    $_SESSION['tempat-lahir'] = $_POST['tempat-lahir'];
-    $_SESSION['tanggal-lahir'] = $_POST['tanggal-lahir'];
-    $_SESSION['pendidikan'] = $_POST['pendidikan'];
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $_SESSION['nama'] = $_POST['nama'];
+//     $_SESSION['tempat-lahir'] = $_POST['tempat-lahir'];
+//     $_SESSION['tanggal-lahir'] = $_POST['tanggal-lahir'];
+//     $_SESSION['pendidikan'] = $_POST['pendidikan'];
 
-    header("Location: cv.php");
-    exit();
-} 
+//     header("Location: cv.php");
+//     exit();
+// } 
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <main style="justify-content: center;">
         <h2>Isi Data CV</h2>
-        <form action="" method="POST">
+        <form action="upload.php" method="POST" enctype="multipart/form-data">
             <label for="nama">Nama:</label>
             <input type="text" name="nama" id="nama" required><br>
 
@@ -36,6 +36,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="pendidikan">Riwayat Pendidikan:</label>
             <input type="text" name="pendidikan" id="pendidikan" required><br>
 
+            <label for="photo">Foto Profil</label>
+            <input type="file" name="photo" id="photo" accept="image/*" required><br>
+            
             <button type="submit">Simpan</button>
         </form>
     </main>

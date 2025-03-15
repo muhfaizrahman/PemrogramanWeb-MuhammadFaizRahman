@@ -1,11 +1,13 @@
 <?php 
-include "session.php"; // kode dalam session.php akan dieksekusi seolah olah ada di page ini
+include "session.php"; 
 
 $nama = $_SESSION['nama'] ?? '-';
 $tempatLahir = $_SESSION['tempat-lahir'] ?? '-';
 $tanggalLahir = $_SESSION['tanggal-lahir'] ?? '-';
 $pendidikan = $_SESSION['pendidikan'] ?? '-';
 $email = $_SESSION['user-email'];
+$photo = $_SESSION["photo"] ?? "default.jpg";
+
  ?>
 
  <!DOCTYPE html>
@@ -17,23 +19,31 @@ $email = $_SESSION['user-email'];
     <link rel="stylesheet" href="css/style.css">
  </head>
  <body>
-      <main>
+      <main id="main-cv">
          <h2>Hasil CV</h2>
          <div id="cv">
-            <div class="row">
-               <strong>Nama:</strong> <span><?= $nama ?></span>
+            <div class="profile">
+               <img src="<?php echo $photo; ?>" alt="Foto CV" width="150">
             </div>
-            <div class="row">
-               <strong>Tempat Lahir:</strong> <span><?= $tempatLahir ?></span>
+            <strong>Nama:</strong> 
+            <div class="kotak">
+               <span><?= $nama ?></span>
             </div>
-            <div class="row">
-               <strong>Tanggal Lahir:</strong> <span><?= $tanggalLahir ?></span>
+            <strong>Tempat Lahir:</strong> 
+            <div class="kotak">
+               <span><?= $tempatLahir ?></span>
             </div>
-            <div class="row">
-               <strong>Riwayat Pendidikan:</strong> <span><?= $pendidikan ?></span>
+            <strong>Tanggal Lahir:</strong> 
+            <div class="kotak">
+               <span><?= $tanggalLahir ?></span>
             </div>
-            <div class="row">
-               <strong>Email:</strong> <span><?= $email ?></span>
+            <strong>Riwayat Pendidikan:</strong> 
+            <div class="kotak">
+               <span><?= $pendidikan ?></span>
+            </div>
+            <strong>Email:</strong> 
+            <div class="kotak">
+               <span><?= $email ?></span>
             </div>
          </div>
          <button id="btn-logout"><a id="logout" href="logout.php">Log Out</a></button>
